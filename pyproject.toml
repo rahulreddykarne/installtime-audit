@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "installtime-audit"
+version = "0.1.0"
+description = "Audit Python packaging files for install-time side effects (network, exec, credential theft, persistence, dependency confusion) that run during pip install. Complements Bandit."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [{ name = "krc7169", email = "krc7169@gmail.com" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/rahulreddykarne/installtime-audit"
+Repository = "https://github.com/rahulreddykarne/installtime-audit"
+Issues = "https://github.com/rahulreddykarne/installtime-audit/issues"
+Changelog = "https://github.com/rahulreddykarne/installtime-audit/releases"
+
+[project.scripts]
+installtime-audit = "installtime_audit.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "build", "twine"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/installtime_audit"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/installtime_audit", "README.md", "LICENSE", "tests"]
